@@ -111,7 +111,7 @@ if uploaded_file is not None:
         
         st.markdown(Matured_policies_60,unsafe_allow_html=True )
         
-     elif chart_select == "Maturity in next 90 days": 
+    elif chart_select == "Maturity in next 90 days": 
         # maturing in the next thirty days
         Matured_policies_90 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Ninety'])]        
 
