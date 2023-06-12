@@ -81,7 +81,7 @@ if uploaded_file is not None:
 # Define chart selection dropdown
 chart_select = st.sidebar.selectbox(
             label="SELECT",
-            options=["Maturity in next 30 days", "Maturity in next 60 days", "Maturity in next ninety days"]
+            options=["Maturity in next 30 days", "Maturity in next 60 days", "Maturity in next 90 days"]
         )
 
 if uploaded_file is not None:
