@@ -78,6 +78,7 @@ if uploaded_file is not None:
         
         Matured_policies_60 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Sixty'])]
         Matured_policies_90 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Ninety'])]
+        st.write(df)
                             
           
     except Exception as e:
@@ -87,7 +88,7 @@ if uploaded_file is not None:
 # Define chart selection dropdown
 chart_select = st.sidebar.selectbox(
             label="SELECT",
-            options=["Maturity in next 30 days", "Other Chart"]
+            options=["Maturity in next 30 days"]
         )
 
 if uploaded_file is not None:
