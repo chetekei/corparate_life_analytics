@@ -82,25 +82,32 @@ if uploaded_file is not None:
           
     except Exception as e:
         st.write("Error:", e)
-       
+        
+        
 # Define chart selection dropdown
 chart_select = st.sidebar.selectbox(
             label="SELECT",
-            options=["Maturity in next 30 days"]
+            options=["Maturity in next 30 days", "Other Chart"]
         )
 
-# Call the corresponding chart function based on user selection
 if uploaded_file is not None:
     if chart_select == "Maturity in next 30 days": 
-        # maturing in the next thirt days
+        # maturing in the next thirty days
         Matured_policies_30 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Thirty'])]        
 
         # Select desired columns
-        Matured_policies_30 = Matured_policies_30 .loc[:, ['Policy No', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Matured_policies_30 = Matured_policies_30.loc[:, ['Policy No', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
         
-    st.dataframe(Matured_policies_30)             
-   
-else:
+        # Display the DataFrame
+        st.subheader("Maturity in next 30 days")
+        st.dataframe(Matured_policies_30)
+        
+    elif chart_select == "Other Chart":
+        # Add code for other chart selection
+        st.write("You selected 'Other Chart'. Add code here to display the chart.")
+        
+    else:
+        st.write("Invalid chart selection.")
+elif uploaded_file is None and chart_select == "Maturity in next 30 days":
     st.write("Please upload a file.")
-   
-        
+             
