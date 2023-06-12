@@ -78,8 +78,7 @@ if uploaded_file is not None:
         
         Matured_policies_60 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Sixty'])]
         Matured_policies_90 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Ninety'])]
-        st.write(df)
-                            
+                                   
           
     except Exception as e:
         st.write("Error:", e)
@@ -101,12 +100,9 @@ if uploaded_file is not None:
         
         # Display the DataFrame
         st.subheader("Maturity in next 30 days")
-        st.dataframe(Matured_policies_30)
+        st.markdown(Matured_policies_30)
         
-    elif chart_select == "Other Chart":
-        # Add code for other chart selection
-        st.write("You selected 'Other Chart'. Add code here to display the chart.")
-        
+   
     else:
         st.write("Invalid chart selection.")
 elif uploaded_file is None and chart_select == "Maturity in next 30 days":
