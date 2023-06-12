@@ -78,8 +78,7 @@ if uploaded_file is not None:
         
         Matured_policies_60 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Sixty'])]
         Matured_policies_90 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Ninety'])]
-        Matured_policies_60
-                    
+                            
           
     except Exception as e:
         st.write("Error:", e)
