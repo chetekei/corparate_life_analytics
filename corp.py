@@ -32,6 +32,8 @@ if uploaded_file is not None:
             
         
         df.dropna(subset=['Policy No'], inplace = True)
+        df['Sum Insured'] = df['Sum Insured'].apply(lambda x: '{:,.0f}'.format(x))
+        df['Premium Received'] = df['Premium Received'].apply(lambda x: '{:,.0f}'.format(x))
 
         df['Start Date'] = pd.to_datetime(df['Start Date'], format='%d/%m/%Y')
 
