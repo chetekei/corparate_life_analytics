@@ -85,25 +85,16 @@ if uploaded_file is not None:
        
 # Define chart selection dropdown
 chart_select = st.sidebar.selectbox(
-            label="Select",
+            label="SELECT",
             options=["Maturity in next 30 days", "Maturity in next 60 days", "Maturity in next 90 days"]
         )
 
 # Call the corresponding chart function based on user selection
 if uploaded_file is not None:
-    if chart_select == "Maturity in next 30 days":
-        
-        today = datetime.today().strftime('%Y-%m-%d')
-        df['Today'] = today
-        df['Today'] = df['Today'].astype('datetime64[ns]')
-        
-        # maturing in the next thirt days
-        Matured_policies_30 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Thirty'])]        
-
-        # Select desired columns
-        Matured_policies_30 = Matured_policies_30 .loc[:, ['Policy No', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
-        
-        st.write(Matured_policies_30)
+    if chart_select == "Maturity in next 30 days":        
+         
+             
+        st.write(df)
         
     else:
         st.write("Failed to load data from the uploaded file.")
