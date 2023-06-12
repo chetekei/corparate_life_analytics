@@ -98,7 +98,7 @@ if uploaded_file is not None:
         policies_30 = len(Matured_policies_30["Policy No"])
         
         # Display the DataFrame
-        st.subheader("Maturity in next 30 days" : "{policies_30}")
+        st.subheader("Maturity in next 30 days: {policies_30} policies")
               
         st.markdown(Matured_policies_30,unsafe_allow_html=True )
         
