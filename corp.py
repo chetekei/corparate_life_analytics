@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, timedelta
 import base64
 
 # configuration
@@ -27,29 +27,58 @@ if uploaded_file is not None:
             df = pd.read_excel(uploaded_file, header=8)
         elif uploaded_file.type == "text/csv":
             df = pd.read_csv(uploaded_file, header=8)
-                      
-
-        # convert date column to month name
-        df = df.iloc[1:]
-        df['Month'] = pd.to_datetime(df['Loss Date']).dt.strftime('%B')
-        df['Day'] = pd.to_datetime(df['Loss Date']).dt.day_name()
-        df['Year'] = pd.to_datetime(df['Loss Date']).dt.year
-        df.dropna(subset=['Claim No'], inplace=True)
-        mask = df['Claim Type'].str.startswith('Work Injury')
-        df.loc[mask, 'Claim Type'] = 'WIBA'
-
-        df['Frequency'] = np.bool_(1)
+            
         
-        # convert timestamp to datetime
-        df['timestamp'] = pd.to_datetime(df['Time of Loss'])
+        df.dropna(subset=['Policy No'], inplace = True)
 
-        # group by 3-hour intervals
-        df['time_interval'] = pd.cut(df['timestamp'].dt.hour + df['timestamp'].dt.minute/60, 
-                                     bins=np.arange(0, 24.01, 3), 
-                                     labels=[f"{i:02d}:00-{i+2:02d}:59" for i in range(0, 24, 3)])
-        grouped_data = df.groupby('time_interval').size().reset_index(name='count')
+        df['Start Date'] = pd.to_datetime(df['Start Date'], format='%d/%m/%Y')
 
-               
+        # Change the format to year-month-day
+        df['Start Date'] = df['Start Date'].dt.strftime('%Y-%m-%d')
+
+        df['Start Date'] = pd.to_datetime(df['Start Date'])
+
+
+        df['Maturity Date'] = pd.to_datetime(df['Maturity Date'], format='%d/%m/%Y')
+
+        # Change the format to year-month-day
+        df['Maturity Date'] = df['Maturity Date'].dt.strftime('%Y-%m-%d')
+
+        df['Maturity Date'] = pd.to_datetime(df['Maturity Date'])
+
+        #today = pd.Timestamp(datetime.today())
+        today = datetime.today().strftime('%Y-%m-%d')
+        df['Today'] = today
+        df['Today'] = df['Today'].astype('datetime64[ns]')
+
+        # Calculate the number of months
+        df['nb_months'] = ((df['Today'] - df['Start Date']) / np.timedelta64(1, 'M')).astype(int)
+
+
+        df["Monthly Premium"] = (df["Annual Premium"] / 12)
+
+        df["Scheduled Payment(as at today)"] = df['Monthly Premium'] * df['nb_months']
+
+        df["Premium Outstanding"] = df["Scheduled Payment(as at today)"] - df["Premium Received"]
+
+        # Get the current date and calculate the date 30 days ahead
+        thirty_days =  df['Today'] + timedelta(days=30)
+        df['Thirty'] = thirty_days
+        df['Thirty'] = df['Thirty'].astype('datetime64[ns]')
+
+        sixty_days =  df['Today'] + timedelta(days=60)
+        df['Sixty'] = sixty_days
+        df['Sixty'] = df['Sixty'].astype('datetime64[ns]')
+
+        ninety_days =  df['Today'] + timedelta(days=90)
+        df['Ninety'] = ninety_days
+        df['Ninety'] = df['Ninety'].astype('datetime64[ns]')
+
+        # Filter the DataFrame for policies maturing in the next thirty days
+        Matured_policies_30 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Thirty'])]
+        Matured_policies_60 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Sixty'])]
+        Matured_policies_90 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Ninety'])]
+                    
           
     except Exception as e:
         st.write("Error:", e)
