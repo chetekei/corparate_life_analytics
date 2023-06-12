@@ -98,7 +98,7 @@ if uploaded_file is not None:
         # Select desired columns
         Matured_policies_30 = Matured_policies_30 .loc[:, ['Policy No', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
         
-        st.write(Matured_policies_30)
+        st.dataframe(df)
      
         
     else:
