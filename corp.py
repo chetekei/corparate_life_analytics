@@ -32,14 +32,7 @@ if uploaded_file is not None:
             
         
         df.dropna(subset=['Policy No'], inplace = True)
-        # removing the decimal point and putting comma in thousand 
-        def format_sum_insured(value):
-            return '{:,.0f}'.format(value)
-
-        # Apply the formatting function to the "sum insured" column
-        df['Premium Received'] = df['Premium Received'].apply(format_sum_insured)
         
-        df['Sum Insured'] = df['Sum Insured'].apply(lambda x: '{:,.0f}'.format(x))
 
         df['Start Date'] = pd.to_datetime(df['Start Date'], format='%d/%m/%Y')
 
