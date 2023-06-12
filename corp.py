@@ -96,5 +96,5 @@ if uploaded_file is not None:
         Matured_policies_30        
 
         # Select desired columns
-         Matured_policies_30 = Matured_policies_30 .loc[:, ['Policy No', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Duration', 'Premium Received']]
+        Matured_policies_30 = Matured_policies_30 .loc[:, ['Policy No', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Duration', 'Premium Received']]
         
