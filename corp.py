@@ -103,7 +103,6 @@ if uploaded_file is not None:
         
     else:
         st.write("Failed to load data from the uploaded file.")
-        st.write(df)
 else:
     st.write("Please upload a file.")
    
