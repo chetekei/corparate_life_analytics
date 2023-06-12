@@ -24,7 +24,9 @@ uploaded_file = st.sidebar.file_uploader(
 if uploaded_file is not None:
     try:
         if uploaded_file.type == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
-            df = pd.read_excel(uploaded_file, header=3)
+            data_types = {'Policy No': str}
+            df = pd.read_excel("data.xlsx", dtype = data_types , header = 3)
+           
         elif uploaded_file.type == "text/csv":
             df = pd.read_csv(uploaded_file, header=3)
             
