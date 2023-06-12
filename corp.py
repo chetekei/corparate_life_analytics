@@ -99,7 +99,7 @@ if uploaded_file is not None:
         
         # Display the DataFrame
         st.subheader("Maturity in next 30 days")
-        Matured_policies_30 = "<span style='font-size: 8px;'>" + Matured_policies_30 + "</span>"
+        Matured_policies_30 = "<span style='font-size: 5px;'>" + Matured_policies_30 + "</span>"
               
         st.markdown(Matured_policies_30, unsafe_allow_html=True)
         
