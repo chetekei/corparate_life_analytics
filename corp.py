@@ -87,7 +87,7 @@ if uploaded_file is not None:
 # Define chart selection dropdown
 chart_select = st.sidebar.selectbox(
             label="SELECT",
-            options=["Maturity in next 30 days"]
+            options=["Maturity in next 30 days", "Maturity in next 60 days", "Maturity in next ninety days"]
         )
 
 if uploaded_file is not None:
@@ -103,6 +103,32 @@ if uploaded_file is not None:
         st.subheader("Maturity in next 30 days")
         
         st.markdown(Matured_policies_30,unsafe_allow_html=True )
+        
+    elif chart_select == "Maturity in next 60 days": 
+        # maturing in the next thirty days
+        Matured_policies_60 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Sixty'])]        
+
+        # Select desired columns
+        Matured_policies_60 = Matured_policies_60.loc[:, ['Policy No', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Matured_policies_60 = Matured_policies_60.to_html(index=False)
+        
+        # Display the DataFrame
+        st.subheader("Maturity in next 60 days")
+        
+        st.markdown(Matured_policies_60,unsafe_allow_html=True )
+        
+     elif chart_select == "Maturity in next 90 days": 
+        # maturing in the next thirty days
+        Matured_policies_90 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Ninety'])]        
+
+        # Select desired columns
+        Matured_policies_90 = Matured_policies_90.loc[:, ['Policy No', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Matured_policies_90 = Matured_policies_90.to_html(index=False)
+        
+        # Display the DataFrame
+        st.subheader("Maturity in next 90 days")
+        
+        st.markdown(Matured_policies_90,unsafe_allow_html=True )
         
    
     else:
