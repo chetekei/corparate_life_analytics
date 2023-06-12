@@ -98,10 +98,8 @@ if uploaded_file is not None:
         # Select desired columns
         Matured_policies_30 = Matured_policies_30 .loc[:, ['Policy No', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
         
-    st.dataframe(Matured_policies_30)     
-        
-    else:
-        st.write("Failed to load data from the uploaded file.")
+    st.dataframe(Matured_policies_30)             
+   
 else:
     st.write("Please upload a file.")
    
