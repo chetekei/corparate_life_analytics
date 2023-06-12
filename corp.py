@@ -82,3 +82,9 @@ if uploaded_file is not None:
           
     except Exception as e:
         st.write("Error:", e)
+       
+# Define chart selection dropdown
+chart_select = st.sidebar.selectbox(
+            label="Select",
+            options=["Maturity in next 30 days", "Maturity in next 60 days", "Maturity in next 90 days"]
+        )
