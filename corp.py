@@ -100,7 +100,7 @@ if uploaded_file is not None:
         # Display the DataFrame
         st.subheader("Maturity in next 30 days")
               
-        st.markdown(Matured_policies_30,unsafe_allow_html=True )
+        st.markdown(<span style='font-size: 8px;'>Matured_policies_30,unsafe_allow_html=True )
         
     elif chart_select == "Maturity in next 60 days": 
         # maturing in the next thirty days
