@@ -75,7 +75,7 @@ if uploaded_file is not None:
         df['Ninety'] = df['Ninety'].astype('datetime64[ns]')
 
         # Filter the DataFrame for policies maturing in the next thirty days
-        Matured_policies_30 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Thirty'])]
+        
         Matured_policies_60 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Sixty'])]
         Matured_policies_90 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Ninety'])]
                     
@@ -93,7 +93,7 @@ chart_select = st.sidebar.selectbox(
 if uploaded_file is not None:
     if chart_select == "Top 5 Claim Payouts":
         # maturing in the next thirt days
-        Matured_policies_30        
+        Matured_policies_30 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Thirty'])]        
 
         # Select desired columns
         Matured_policies_30 = Matured_policies_30 .loc[:, ['Policy No', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
