@@ -72,13 +72,7 @@ if uploaded_file is not None:
 
         ninety_days =  df['Today'] + timedelta(days=90)
         df['Ninety'] = ninety_days
-        df['Ninety'] = df['Ninety'].astype('datetime64[ns]')
-
-        # Filter the DataFrame for policies maturing in the next thirty days
-        
-        Matured_policies_60 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Sixty'])]
-        Matured_policies_90 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Ninety'])]
-                                   
+        df['Ninety'] = df['Ninety'].astype('datetime64[ns]')                                        
           
     except Exception as e:
         st.write("Error:", e)
