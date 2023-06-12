@@ -97,6 +97,7 @@ if uploaded_file is not None:
 
         # Select desired columns
         Matured_policies_30 = Matured_policies_30.loc[:, ['Policy No', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Matured_policies_30 = Matured_policies_30.to_html(index=False)
         
         # Display the DataFrame
         st.subheader("Maturity in next 30 days")
