@@ -95,12 +95,13 @@ if uploaded_file is not None:
         # Select desired columns
         Matured_policies_30 = Matured_policies_30.loc[:, ['Policy No', 'Insured', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
         Matured_policies_30 = Matured_policies_30.to_html(index=False)
-        policies_30 = len(Matured_policies_30["Policy No"])
+        
         
         # Display the DataFrame
         st.subheader("Maturity in next 30 days")
+        Matured_policies_30 = "<span style='font-size: 8px;'>" + Matured_policies_30 + "</span>"
               
-        st.markdown("<span style='font-size: 5px;'>Matured_policies_30</span>", unsafe_allow_html=True)
+        st.markdown(Matured_policies_30, , unsafe_allow_html=True)
         
     elif chart_select == "Maturity in next 60 days": 
         # maturing in the next thirty days
