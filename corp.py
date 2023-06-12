@@ -93,12 +93,12 @@ if uploaded_file is not None:
         Matured_policies_30 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Thirty'])]        
 
         # Select desired columns
-        Matured_policies_30 = Matured_policies_30.loc[:, ['Policy No', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Matured_policies_30 = Matured_policies_30.loc[:, ['Policy No', 'Insured', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
         Matured_policies_30 = Matured_policies_30.to_html(index=False)
         policies_30 = len(Matured_policies_30["Policy No"])
         
         # Display the DataFrame
-        st.subheader("Maturity in next 30 days: {policies_30} policies")
+        st.subheader("Maturity in next 30 days")
               
         st.markdown(Matured_policies_30,unsafe_allow_html=True )
         
@@ -107,7 +107,7 @@ if uploaded_file is not None:
         Matured_policies_60 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Sixty'])]        
 
         # Select desired columns
-        Matured_policies_60 = Matured_policies_60.loc[:, ['Policy No', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Matured_policies_60 = Matured_policies_60.loc[:, ['Policy No', 'Insured', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
         Matured_policies_60 = Matured_policies_60.to_html(index=False)
         
         # Display the DataFrame
@@ -120,7 +120,7 @@ if uploaded_file is not None:
         Matured_policies_90 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Ninety'])]        
 
         # Select desired columns
-        Matured_policies_90 = Matured_policies_90.loc[:, ['Policy No', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Matured_policies_90 = Matured_policies_90.loc[:, ['Policy No', 'Insured', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
         Matured_policies_90 = Matured_policies_90.to_html(index=False)
         
         # Display the DataFrame
