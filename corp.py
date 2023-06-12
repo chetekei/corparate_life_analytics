@@ -90,7 +90,7 @@ chart_select = st.sidebar.selectbox(
         )
 
 # Call the corresponding chart function based on user selection
-if uploaded_file is not None:
+if uploaded file is not None:
     if chart_select == "Maturity in next 30 days": 
         # maturing in the next thirt days
         Matured_policies_30 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Thirty'])]        
@@ -98,7 +98,7 @@ if uploaded_file is not None:
         # Select desired columns
         Matured_policies_30 = Matured_policies_30 .loc[:, ['Policy No', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
         
-        st.dataframe(df)
+    st.dataframe(df)
      
         
     else:
