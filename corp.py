@@ -21,13 +21,6 @@ uploaded_file = st.sidebar.file_uploader(
     type=['csv', 'xlsx', 'xls']
 )
 
-# Define date range selection
-date_range = st.sidebar.date_input("Select date range", [])
-
-if len(date_range) == 2:
-    start_date = date_range[0]
-    end_date = date_range[1]
-
 
 if uploaded_file is not None:
     try:
@@ -105,6 +98,21 @@ chart_select = st.sidebar.selectbox(
         )
 
 if uploaded_file is not None:
+    # Define date range selection
+    start_date = st.sidebar.date_input("Start Date")
+    end_date = st.sidebar.date_input("End Date")
+    
+    # Load your DataFrame here
+    df = pd.read_excel(uploaded_file, dtype = data_types , header = 4)
+    
+    
+    # Filter DataFrame based on selected date range
+    filtered_df = df[(df['Maturity Date'] >= start_date) & (df['Maturity Date'] <= end_date)]
+    
+    # Display filtered DataFrame
+    st.subheader("Filtered Maturity Data")
+    st.dataframe(filtered_df)
+
     if chart_select == "Maturity in next 30 days": 
         # maturing in the next thirty days
         Matured_policies_30 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Thirty'])] 
