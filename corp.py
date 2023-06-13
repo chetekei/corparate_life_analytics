@@ -108,7 +108,7 @@ if uploaded_file is not None:
         
         # Display filtered DataFrame
         st.subheader("Filtered Maturity Data")
-        st.dataframe(filtered_df)
+        st.markdown(filtered_df)
 
     else:
         if chart_select == "Maturity in next 30 days":
