@@ -118,11 +118,11 @@ if uploaded_file is not None:
             csv = data.to_csv(index=False, encoding='utf-8-sig')
             b64 = base64.b64encode(csv.encode()).decode()
             href = f'<a href="data:file/csv;base64,{b64}" download="{file_name}">{link_text}</a>'
-            return href
+        
         
         # Create and display the download link
         download_link = create_download_link(Matured_policies_30, 'table_data.csv', 'Download as CSV')
-        st.markdown(download_link, unsafe_allow_html=True)
+        st.markdown( download_link, unsafe_allow_html=True)
 
     elif chart_select == "Maturity in next 60 days": 
         # maturing in the next thirty days
