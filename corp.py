@@ -107,7 +107,7 @@ if uploaded_file is not None:
         Matured_policies_30 = Matured_policies_30.to_html(index=False)
 
          # Add inline CSS to change font size
-        Matured_policies_30 = Matured_policies_30.replace('<table', '<table style="font-size: 6px;"')
+        Matured_policies_30 = Matured_policies_30.replace('<table', '<table style="font-size: 10px;"')
 
         
         
@@ -126,6 +126,9 @@ if uploaded_file is not None:
         # Select desired columns
         Matured_policies_60 = Matured_policies_60.loc[:, ['Policy No', 'Insured', 'Status', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
         Matured_policies_60 = Matured_policies_60.to_html(index=False, classes=["small-font"])
+
+         # Add inline CSS to change font size
+        Matured_policies_60 = Matured_policies_60.replace('<table', '<table style="font-size: 10px;"')
         
         # Display the DataFrame
         st.subheader(f"First Maturity in 60 days as from today to {long_date_sixty}")
@@ -141,6 +144,9 @@ if uploaded_file is not None:
         # Select desired columns
         Matured_policies_90 = Matured_policies_90.loc[:, ['Policy No', 'Insured', 'Status', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
         Matured_policies_90 = Matured_policies_90.to_html(index=False, classes=["small-font"])
+
+         # Add inline CSS to change font size
+        Matured_policies_90 = Matured_policies_90.replace('<table', '<table style="font-size: 10px;"')
         
         # Display the DataFrame
         st.subheader(f"First Maturity in 90 days as from today to {long_date_ninety}")
