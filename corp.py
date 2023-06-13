@@ -113,23 +113,15 @@ if uploaded_file is not None:
                       
         st.markdown(Matured_policies_30, unsafe_allow_html=True)
         
-        # Create a temporary file path to save the Excel file
-        temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.xlsx')
-        temp_file.close()
-        
-        # Save the DataFrame as an Excel file
-        Matured_policies_90.to_excel(temp_file.name, index=False, encoding='utf-8', header=True)
-        
         # Create a download link for the Excel file
-        def create_download_link(file_path, file_name, link_text):
-            with open(file_path, 'rb') as file:
-                contents = file.read()
-            b64 = base64.b64encode(contents).decode()
-            href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="{file_name}">{link_text}</a>'
+        def create_download_link(data, file_name, link_text):
+            csv = data.to_csv(index=False, encoding='utf-8-sig')
+            b64 = base64.b64encode(csv.encode()).decode()
+            href = f'<a href="data:file/csv;base64,{b64}" download="{file_name}">{link_text}</a>'
             return href
         
         # Create and display the download link
-        download_link = create_download_link(temp_file.name, 'table_data.xlsx', 'Download as Excel')
+        download_link = create_download_link(Matured_policies_30, 'table_data.csv', 'Download as CSV')
         st.markdown(download_link, unsafe_allow_html=True)
 
     elif chart_select == "Maturity in next 60 days": 
