@@ -21,9 +21,13 @@ uploaded_file = st.sidebar.file_uploader(
     type=['csv', 'xlsx', 'xls']
 )
 
-# Calendar widget for date range selection
-start_date = st.sidebar.date_input("Select start date")
-end_date = st.sidebar.date_input("Select end date")
+# Define date range selection
+date_range = st.sidebar.date_input("Select date range", [])
+
+if len(date_range) == 2:
+    start_date = date_range[0]
+    end_date = date_range[1]
+
 
 if uploaded_file is not None:
     try:
