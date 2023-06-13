@@ -66,10 +66,16 @@ if uploaded_file is not None:
 
         # Get the current date and calculate the date 30 days ahead
         thirty_days =  df['Today'] + timedelta(days=30)
+        #get one entry from the thirty days column
+        thirty = thirty_days[5].date()
+        long_date_thirty = thirty.strftime("%A, %B %d, %Y")
         df['Thirty'] = thirty_days
         df['Thirty'] = df['Thirty'].astype('datetime64[ns]')
 
         sixty_days =  df['Today'] + timedelta(days=60)
+        #get one entry from the sixty days column
+        sixty = sixty_days[5].date()
+        long_date_sixty = sixty.strftime("%A, %B %d, %Y")
         df['Sixty'] = sixty_days
         df['Sixty'] = df['Sixty'].astype('datetime64[ns]')
 
@@ -101,7 +107,7 @@ if uploaded_file is not None:
         
         
         # Display the DataFrame
-        st.subheader("Maturity in next 30 days")
+        st.subheader(f"Maturity in next 30 days as from {today} to {long_date_thirty}")
         Matured_policies_30 = "<span style='font-size: 5px;'>" + Matured_policies_30 + "</span>"
               
         st.markdown(Matured_policies_30, unsafe_allow_html=True)
@@ -115,7 +121,7 @@ if uploaded_file is not None:
         Matured_policies_60 = Matured_policies_60.to_html(index=False)
         
         # Display the DataFrame
-        st.subheader("Maturity in next 60 days")
+        st.subheader(f"Maturity in next 60 days as from {today} to {long_date_sixty}")
         
         st.markdown(Matured_policies_60,unsafe_allow_html=True )
         
