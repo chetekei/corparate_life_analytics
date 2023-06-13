@@ -94,26 +94,23 @@ if uploaded_file is not None:
 # Define chart selection dropdown
 chart_select = st.sidebar.selectbox(
             label="SELECT",
-            options=["Maturity in next 30 days", "Maturity in next 60 days", "Maturity in next 90 days"]
+            options=["Output as per the filtered dates", "Maturity in next 30 days", "Maturity in next 60 days", "Maturity in next 90 days"]
         )
 
 if uploaded_file is not None:
-    # Define date range selection
-    start_date = st.sidebar.date_input("Start Date")
-    end_date = st.sidebar.date_input("End Date")
-    
-    # Load your DataFrame here
-    df = pd.read_excel(uploaded_file, dtype = data_types , header = 4)
-    
-    
-    # Filter DataFrame based on selected date range
-    filtered_df = df[(df['Maturity Date'] >= start_date) & (df['Maturity Date'] <= end_date)]
-    
-    # Display filtered DataFrame
-    st.subheader("Filtered Maturity Data")
-    st.dataframe(filtered_df)
+    if chart_select == "Output as per the filtered dates":
+        # Define date range selection
+        start_date = st.sidebar.date_input("Start Date")
+        end_date = st.sidebar.date_input("End Date")  
+        
+        # Filter DataFrame based on selected date range
+        filtered_df = df[(df['Maturity Date'] >= start_date) & (df['Maturity Date'] <= end_date)]
+        
+        # Display filtered DataFrame
+        st.subheader("Filtered Maturity Data")
+        st.dataframe(filtered_df)
 
-    if chart_select == "Maturity in next 30 days": 
+    elif chart_select == "Maturity in next 30 days": 
         # maturing in the next thirty days
         Matured_policies_30 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Thirty'])] 
         number_30 = len(Matured_policies_30['Policy No'])
