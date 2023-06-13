@@ -98,81 +98,54 @@ chart_select = st.sidebar.selectbox(
         )
 
 if uploaded_file is not None:
-    if chart_select == "Output as per the filtered dates":
-        # Define date range selection
-        start_date = st.sidebar.date_input("Start Date")
-        end_date = st.sidebar.date_input("End Date")  
-        
-        # Filter DataFrame based on selected date range
-        filtered_df = df[(df['Maturity Date'] >= start_date) & (df['Maturity Date'] <= end_date)]
-        
-        # Display filtered DataFrame
-        st.subheader("Filtered Maturity Data")
-        st.markdown(filtered_df)
+    if chart_select == "Maturity in next 30 days":
+        # maturing in the next thirty days
+        Matured_policies_30 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Thirty'])]
+        number_30 = len(Matured_policies_30['Policy No'])
 
-    else:
-        if chart_select == "Maturity in next 30 days":
-            # maturing in the next thirty days
-            Matured_policies_30 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Thirty'])] 
-            number_30 = len(Matured_policies_30['Policy No'])
-    
-            # Select desired columns
-            Matured_policies_30 = Matured_policies_30.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
-            Matured_policies_30 = Matured_policies_30.to_html(index=False)
-    
-             # Add inline CSS to change font size
-            Matured_policies_30 = Matured_policies_30.replace('<table', '<table style="font-size: 10px;"')
-    
-            
-            
-            # Display the DataFrame
-            st.subheader(f"First Maturity in 30 days as from today to {long_date_thirty}")
-            st.markdown (f"Total number of policies: **{number_30}**")
-                          
-            st.markdown(Matured_policies_30, unsafe_allow_html=True)
+        # Select desired columns
+        Matured_policies_30 = Matured_policies_30.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Matured_policies_30 = Matured_policies_30.to_html(index=False)
+       
+       
+        # Display the DataFrame
+        st.subheader(f"First Maturity in 30 days as from today to {long_date_thirty}")
+        st.markdown (f"Total number of policies: **{number_30}**")
+                     
+        st.markdown(Matured_policies_30, unsafe_allow_html=True)
                
 
-        elif chart_select == "Maturity in next 60 days": 
-            # maturing in the next thirty days
-            Matured_policies_60 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Sixty'])] 
-            number_60 = len(Matured_policies_60['Policy No'])
-    
-            # Select desired columns
-            Matured_policies_60 = Matured_policies_60.loc[:, ['Policy No', 'Insured', 'Status', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
-            Matured_policies_60 = Matured_policies_60.to_html(index=False, classes=["small-font"])
-    
-             # Add inline CSS to change font size
-            Matured_policies_60 = Matured_policies_60.replace('<table', '<table style="font-size: 10px;"')
-            
-            # Display the DataFrame
-            st.subheader(f"First Maturity in 60 days as from today to {long_date_sixty}")
-            st.markdown (f"Total number of policies: **{number_60}**")
-            
-            st.markdown(Matured_policies_60,unsafe_allow_html=True )
-        
-        elif chart_select == "Maturity in next 90 days": 
-            # maturing in the next thirty days
-            Matured_policies_90 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Ninety'])] 
-            number_90 = len(Matured_policies_90['Policy No'])
-    
-            # Select desired columns
-            Matured_policies_90 = Matured_policies_90.loc[:, ['Policy No', 'Insured', 'Status', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
-            Matured_policies_90 = Matured_policies_90.to_html(index=False, classes=["small-font"])
-    
-             # Add inline CSS to change font size
-            Matured_policies_90 = Matured_policies_90.replace('<table', '<table style="font-size: 10px;"')
-            
-            # Display the DataFrame
-            st.subheader(f"First Maturity in 90 days as from today to {long_date_ninety}")
-            st.markdown (f"Total number of policies: **{number_90}**")
-                    
-            st.markdown(Matured_policies_90, unsafe_allow_html=True )
-        
-        else:
-            st.write("Failed to load data from the uploaded file.")
+    elif chart_select == "Maturity in next 60 days":
+        # maturing in the next thirty days
+        Matured_policies_60 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Sixty'])]
+        number_60 = len(Matured_policies_60['Policy No'])
+
+        # Select desired columns
+        Matured_policies_60 = Matured_policies_60.loc[:, ['Policy No', 'Insured', 'Status', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Matured_policies_60 = Matured_policies_60.to_html(index=False)
+       
+        # Display the DataFrame
+        st.subheader(f"First Maturity in 60 days as from today to {long_date_sixty}")
+        st.markdown (f"Total number of policies: **{number_60}**")
+       
+        st.markdown(Matured_policies_60,unsafe_allow_html=True )
+       
+    elif chart_select == "Maturity in next 90 days":
+        # maturing in the next thirty days
+        Matured_policies_90 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Ninety'])]
+        number_90 = len(Matured_policies_90['Policy No'])
+
+        # Select desired columns
+        Matured_policies_90 = Matured_policies_90.loc[:, ['Policy No', 'Insured', 'Status', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Matured_policies_90 = Matured_policies_90.to_html(index=False)
+       
+        # Display the DataFrame
+        st.subheader(f"First Maturity in 90 days as from today to {long_date_ninety}")
+        st.markdown (f"Total number of policies: **{number_90}**")
+               
+        st.markdown(Matured_policies_90, unsafe_allow_html=True )
+       
+    else:
+        st.write("Failed to load data from the uploaded file.")
 else:
     st.write("Please upload a file to visualize.")
-   
-
-
-             
