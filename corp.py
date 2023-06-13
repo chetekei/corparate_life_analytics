@@ -99,7 +99,8 @@ chart_select = st.sidebar.selectbox(
 if uploaded_file is not None:
     if chart_select == "Maturity in next 30 days": 
         # maturing in the next thirty days
-        Matured_policies_30 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Thirty'])]        
+        Matured_policies_30 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Thirty'])] 
+        number_30 = len(Matured_policies_30['Policy No'])
 
         # Select desired columns
         Matured_policies_30 = Matured_policies_30.loc[:, ['Policy No', 'Insured', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
@@ -114,7 +115,8 @@ if uploaded_file is not None:
         
     elif chart_select == "Maturity in next 60 days": 
         # maturing in the next thirty days
-        Matured_policies_60 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Sixty'])]        
+        Matured_policies_60 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Sixty'])] 
+        number_60 = len(Matured_policies_60['Policy No'])
 
         # Select desired columns
         Matured_policies_60 = Matured_policies_60.loc[:, ['Policy No', 'Insured', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
@@ -127,7 +129,8 @@ if uploaded_file is not None:
         
     elif chart_select == "Maturity in next 90 days": 
         # maturing in the next thirty days
-        Matured_policies_90 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Ninety'])]        
+        Matured_policies_90 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Ninety'])] 
+        number_90 = len(Matured_policies_90['Policy No'])
 
         # Select desired columns
         Matured_policies_90 = Matured_policies_90.loc[:, ['Policy No', 'Insured', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
@@ -135,6 +138,7 @@ if uploaded_file is not None:
         
         # Display the DataFrame
         st.subheader(f"Maturity in next 90 days as from {today} to {long_date_ninety}")
+        st.markdown (f"Total number of policies: **{number_90}**")
         
         st.markdown(Matured_policies_90, unsafe_allow_html=True )
         
