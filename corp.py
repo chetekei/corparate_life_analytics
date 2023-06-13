@@ -108,7 +108,7 @@ if uploaded_file is not None:
         
         
         # Display the DataFrame
-        st.subheader(f"Maturity in next 30 days as from today to {long_date_thirty}")
+        st.subheader(f"First Maturity in 30 days as from today to {long_date_thirty}")
         st.markdown (f"Total number of policies: **{number_30}**")
                       
         st.markdown(Matured_policies_30, unsafe_allow_html=True)
@@ -124,7 +124,7 @@ if uploaded_file is not None:
         Matured_policies_60 = Matured_policies_60.to_html(index=False)
         
         # Display the DataFrame
-        st.subheader(f"Maturity in next 60 days as from today to {long_date_sixty}")
+        st.subheader(f"First Maturity in 60 days as from today to {long_date_sixty}")
         st.markdown (f"Total number of policies: **{number_60}**")
         
         st.markdown(Matured_policies_60,unsafe_allow_html=True )
@@ -139,7 +139,7 @@ if uploaded_file is not None:
         Matured_policies_90 = Matured_policies_90.to_html(index=False)
         
         # Display the DataFrame
-        st.subheader(f"Maturity in next 90 days as from today to {long_date_ninety}")
+        st.subheader(f"First Maturity in 90 days as from today to {long_date_ninety}")
         st.markdown (f"Total number of policies: **{number_90}**")
                 
         st.markdown(Matured_policies_90, unsafe_allow_html=True )
