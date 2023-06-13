@@ -103,7 +103,7 @@ if uploaded_file is not None:
         number_30 = len(Matured_policies_30['Policy No'])
 
         # Select desired columns
-        Matured_policies_30 = Matured_policies_30.loc[:, ['Policy No', 'Insured', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Matured_policies_30 = Matured_policies_30.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
         Matured_policies_30 = Matured_policies_30.to_html(index=False)
         
         
@@ -133,7 +133,7 @@ if uploaded_file is not None:
         number_60 = len(Matured_policies_60['Policy No'])
 
         # Select desired columns
-        Matured_policies_60 = Matured_policies_60.loc[:, ['Policy No', 'Insured', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Matured_policies_60 = Matured_policies_60.loc[:, ['Policy No', 'Insured', 'Status', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
         Matured_policies_60 = Matured_policies_60.to_html(index=False)
         
         # Display the DataFrame
@@ -148,7 +148,7 @@ if uploaded_file is not None:
         number_90 = len(Matured_policies_90['Policy No'])
 
         # Select desired columns
-        Matured_policies_90 = Matured_policies_90.loc[:, ['Policy No', 'Insured', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Matured_policies_90 = Matured_policies_90.loc[:, ['Policy No', 'Insured', 'Status', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
         Matured_policies_90 = Matured_policies_90.to_html(index=False)
         
         # Display the DataFrame
