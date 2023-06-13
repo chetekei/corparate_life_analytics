@@ -168,8 +168,8 @@ if uploaded_file is not None:
                     
             st.markdown(Matured_policies_90, unsafe_allow_html=True )
         
-    else:
-        st.write("Failed to load data from the uploaded file.")
+        else:
+            st.write("Failed to load data from the uploaded file.")
 else:
     st.write("Please upload a file to visualize.")
    
