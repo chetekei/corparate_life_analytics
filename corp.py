@@ -21,6 +21,10 @@ uploaded_file = st.sidebar.file_uploader(
     type=['csv', 'xlsx', 'xls']
 )
 
+# Calendar widget for date range selection
+start_date = st.sidebar.date_input("Select start date")
+end_date = st.sidebar.date_input("Select end date")
+
 if uploaded_file is not None:
     try:
         if uploaded_file.type == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
