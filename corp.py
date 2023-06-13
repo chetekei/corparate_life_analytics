@@ -125,7 +125,7 @@ if uploaded_file is not None:
         Matured_policies_90 = Matured_policies_90.to_html(index=False)
         
         # Display the DataFrame
-        st.subheader("Maturity in next 90 days as from {today} to {ninety_days}")
+        st.subheader(f"Maturity in next 90 days as from {today} to {ninety_days}")
         
         st.markdown(Matured_policies_90, unsafe_allow_html=True )
         
