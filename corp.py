@@ -119,7 +119,7 @@ if uploaded_file is not None:
             href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="{file_name}">{link_text}</a>'
             return href
 
-        # Create and display the download link
+        # Create and display the link
         download_link = create_download_link(Matured_policies_90, 'table_data.xlsx', 'Download as Excel')
         st.markdown(download_link, unsafe_allow_html=True)
         
