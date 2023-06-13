@@ -112,6 +112,16 @@ if uploaded_file is not None:
         st.markdown (f"Total number of policies: **{number_30}**")
                       
         st.markdown(Matured_policies_30, unsafe_allow_html=True)
+        # Create a download link for the Excel file
+        def create_download_link(data, file_name, link_text):
+            csv = data.to_excel(index=False, encoding='utf-8', header=True)
+            b64 = base64.b64encode(csv.encode()).decode()
+            href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="{file_name}">{link_text}</a>'
+            return href
+
+        # Create and display the download link
+        download_link = create_download_link(Matured_policies_90, 'table_data.xlsx', 'Download as Excel')
+        st.markdown(download_link, unsafe_allow_html=True)
         
     elif chart_select == "Maturity in next 60 days": 
         # maturing in the next thirty days
