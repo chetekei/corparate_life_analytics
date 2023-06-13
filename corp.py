@@ -113,8 +113,8 @@ if uploaded_file is not None:
                       
         st.markdown(Matured_policies_30, unsafe_allow_html=True)
         # Create a download link for the Excel file
-        def create_download_link(data, file_name, link_text):
-            csv = data.to_excel(index=False, encoding='utf-8', header=True)
+        def create_download_link(Matured_policies_30, file_name, link_text):
+            csv = Matured_policies_30.to_excel(index=False, encoding='utf-8', header=True)
             b64 = base64.b64encode(csv.encode()).decode()
             href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="{file_name}">{link_text}</a>'
             return href
