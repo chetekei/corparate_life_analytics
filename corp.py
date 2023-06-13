@@ -74,6 +74,8 @@ if uploaded_file is not None:
         df['Sixty'] = df['Sixty'].astype('datetime64[ns]')
 
         ninety_days =  df['Today'] + timedelta(days=90)
+        #get one entry from the ninety days column
+        ninety = ninety_days[5]
         df['Ninety'] = ninety_days
         df['Ninety'] = df['Ninety'].astype('datetime64[ns]')                                        
           
@@ -125,7 +127,7 @@ if uploaded_file is not None:
         Matured_policies_90 = Matured_policies_90.to_html(index=False)
         
         # Display the DataFrame
-        st.subheader(f"Maturity in next 90 days as from {today} to {ninety_days}")
+        st.subheader(f"Maturity in next 90 days as from {today} to {ninety}")
         
         st.markdown(Matured_policies_90, unsafe_allow_html=True )
         
