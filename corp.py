@@ -75,7 +75,7 @@ if uploaded_file is not None:
 
         ninety_days =  df['Today'] + timedelta(days=90)
         #get one entry from the ninety days column
-        ninety = ninety_days[5]
+        ninety = ninety_days[5].dt.date
         df['Ninety'] = ninety_days
         df['Ninety'] = df['Ninety'].astype('datetime64[ns]')                                        
           
