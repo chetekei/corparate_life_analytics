@@ -121,7 +121,7 @@ if uploaded_file is not None:
 
         # Select desired columns
         Matured_policies_60 = Matured_policies_60.loc[:, ['Policy No', 'Insured', 'Status', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
-        Matured_policies_60 = Matured_policies_60.to_html(index=False)
+        Matured_policies_60 = Matured_policies_60.to_html(index=False, classes=["small-font"])
         
         # Display the DataFrame
         st.subheader(f"First Maturity in 60 days as from today to {long_date_sixty}")
@@ -136,7 +136,7 @@ if uploaded_file is not None:
 
         # Select desired columns
         Matured_policies_90 = Matured_policies_90.loc[:, ['Policy No', 'Insured', 'Status', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
-        Matured_policies_90 = Matured_policies_90.to_html(index=False)
+        Matured_policies_90 = Matured_policies_90.to_html(index=False, classes=["small-font"])
         
         # Display the DataFrame
         st.subheader(f"First Maturity in 90 days as from today to {long_date_ninety}")
