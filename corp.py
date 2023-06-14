@@ -65,10 +65,10 @@ if uploaded_file is not None:
 
         df["Premium Outstanding"] = df["Scheduled Payment(as at today)"] - df["Premium Received"]
 
-        df["Maturity Date"].dt.year
+        
         df['Maturity Year'] = df['Maturity Date'].dt.year
         
-        df["Maturity Date"].dt.month_name()
+       
         df['Maturity Month'] = df['Maturity Date'].dt.month_name()                                       
           
     except Exception as e:
