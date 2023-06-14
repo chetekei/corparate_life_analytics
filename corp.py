@@ -65,27 +65,11 @@ if uploaded_file is not None:
 
         df["Premium Outstanding"] = df["Scheduled Payment(as at today)"] - df["Premium Received"]
 
-        # Get the current date and calculate the date 30 days ahead
-        thirty_days =  df['Today'] + timedelta(days=30)
-        #get one entry from the thirty days column
-        thirty = thirty_days[5].date()
-        long_date_thirty = thirty.strftime("%A, %B %d, %Y")
-        df['Thirty'] = thirty_days
-        df['Thirty'] = df['Thirty'].astype('datetime64[ns]')
-
-        sixty_days =  df['Today'] + timedelta(days=60)
-        #get one entry from the sixty days column
-        sixty = sixty_days[5].date()
-        long_date_sixty = sixty.strftime("%A, %B %d, %Y")
-        df['Sixty'] = sixty_days
-        df['Sixty'] = df['Sixty'].astype('datetime64[ns]')
-
-        ninety_days =  df['Today'] + timedelta(days=90)
-        #get one entry from the ninety days column
-        ninety = ninety_days[5].date()
-        long_date_ninety = ninety.strftime("%A, %B %d, %Y")
-        df['Ninety'] = ninety_days
-        df['Ninety'] = df['Ninety'].astype('datetime64[ns]')                                        
+        newdf["Maturity Date"].dt.year
+        newdf['Maturity Year'] = newdf['Maturity Date'].dt.year
+        
+        newdf["Maturity Date"].dt.month_name()
+        newdf['Maturity Month'] = newdf['Maturity Date'].dt.month_name()                                       
           
     except Exception as e:
         st.write("Error:", e)
@@ -94,62 +78,64 @@ if uploaded_file is not None:
 # Define chart selection dropdown
 chart_select = st.sidebar.selectbox(
             label="SELECT",
-            options=["Maturity in next 30 days", "Maturity in next 60 days", "Maturity in next 90 days"]
+            options=["January 2023", "February 2023", "March 2023"]
         )
 
 if uploaded_file is not None:
-    if chart_select == "Maturity in next 30 days":
-        # maturing in the next thirty days
-        Matured_policies_30 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Thirty'])]
-        number_30 = len(Matured_policies_30['Policy No'])
+    if chart_select == "January 2023":
+        # maturing in Jan 2023
+        Jan = df[(df['Maturity Month'] == 'January') & (df['Maturity Year'] == 2023 )]
+        Jan_number = len(Jan['Policy No'])
 
         # Select desired columns
-        Matured_policies_30 = Matured_policies_30.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
-        Matured_policies_30 = Matured_policies_30.to_html(index=False)
+        Jan = Jan.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Jan = Jan.to_html(index=False)
         # Add inline CSS to change font size
-        Matured_policies_30 = Matured_policies_30.replace('<table', '<table style="font-size: 10px;"')
+        Jan = Jan.replace('<table', '<table style="font-size: 11px;"')
        
        
         # Display the DataFrame
-        st.subheader(f"First Maturity in 30 days as from today to {long_date_thirty}")
-        st.markdown (f"Total number of policies: **{number_30}**")
+        st.subheader(f"First Maturity in January 2023")
+        st.markdown (f"Total number of policies: **{Jan_number}**")
                      
-        st.markdown(Matured_policies_30, unsafe_allow_html=True)
+        st.markdown(Jan, unsafe_allow_html=True)
                
 
-    elif chart_select == "Maturity in next 60 days":
-        # maturing in the next thirty days
-        Matured_policies_60 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Sixty'])]
-        number_60 = len(Matured_policies_60['Policy No'])
+    elif chart_select == "February 2023":
+        # maturing in Feb
+        Feb = df[(df['Maturity Month'] == 'February') & (df['Maturity Year'] == 2023 )]
+        Feb_number = len(Feb['Policy No'])
 
         # Select desired columns
-        Matured_policies_60 = Matured_policies_60.loc[:, ['Policy No', 'Insured', 'Status', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
-        Matured_policies_60 = Matured_policies_60.to_html(index=False)
+        Feb = Feb.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Feb = Feb.to_html(index=False)
         # Add inline CSS to change font size
-        Matured_policies_60 = Matured_policies_60.replace('<table', '<table style="font-size: 10px;"')
+        Feb = Feb.replace('<table', '<table style="font-size: 11px;"')
+       
        
         # Display the DataFrame
-        st.subheader(f"First Maturity in 60 days as from today to {long_date_sixty}")
-        st.markdown (f"Total number of policies: **{number_60}**")
+        st.subheader(f"First Maturity in February 2023")
+        st.markdown (f"Total number of policies: **{Feb_number}**")
+                     
+        st.markdown(Feb, unsafe_allow_html=True)
        
-        st.markdown(Matured_policies_60,unsafe_allow_html=True )
-       
-    elif chart_select == "Maturity in next 90 days":
-        # maturing in the next thirty days
-        Matured_policies_90 = df[(df['Maturity Date'] >= df['Today']) & (df['Maturity Date'] <= df['Ninety'])]
-        number_90 = len(Matured_policies_90['Policy No'])
+    elif chart_select == "March 2023":
+        # maturing in March
+        Mar = df[(df['Maturity Month'] == 'March') & (df['Maturity Year'] == 2023 )]
+        Mar_number = len(Feb['Policy No'])
 
         # Select desired columns
-        Matured_policies_90 = Matured_policies_90.loc[:, ['Policy No', 'Insured', 'Status', 'Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
-        Matured_policies_90 = Matured_policies_90.to_html(index=False)
+        Mar = Mar.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Mar = Mar.to_html(index=False)
         # Add inline CSS to change font size
-        Matured_policies_90 = Matured_policies_90.replace('<table', '<table style="font-size: 10px;"')
+        Mar = Mar.replace('<table', '<table style="font-size: 11px;"')
+       
        
         # Display the DataFrame
-        st.subheader(f"First Maturity in 90 days as from today to {long_date_ninety}")
-        st.markdown (f"Total number of policies: **{number_90}**")
-               
-        st.markdown(Matured_policies_90, unsafe_allow_html=True )
+        st.subheader(f"First Maturity in March 2023")
+        st.markdown (f"Total number of policies: **{Mar_number}**")
+                     
+        st.markdown(Mar, unsafe_allow_html=True)
        
     else:
         st.write("Failed to load data from the uploaded file.")
