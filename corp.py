@@ -173,7 +173,7 @@ if uploaded_file is not None:
         Jun_number = len(Jun['Policy No'])
 
         # Select desired columns
-        Jun = Jun.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received','Units Paid', 'Units Outstanding']]
+        Jun = Jun.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received', 'Policy Months to date', 'Units Paid', 'Units Outstanding']]
         Jun = Jun.to_html(index=False)
         # Add inline CSS to change font size
         Jun = Jun.replace('<table', '<table style="font-size: 11px;"')
