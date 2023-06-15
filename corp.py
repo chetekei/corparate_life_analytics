@@ -52,8 +52,8 @@ if uploaded_file is not None:
 
         #today = pd.Timestamp(datetime.today())
         today = datetime.today().strftime('%Y-%m-%d')
-        newdf['Today'] = today
-        newdf['Today'] = newdf['Today'].astype('datetime64[ns]')
+        df['Today'] = today
+        df['Today'] = df['Today'].astype('datetime64[ns]')
 
         
         # Calculate the number of months
