@@ -67,7 +67,7 @@ if uploaded_file is not None:
         df["Premium Outstanding"] = df["Expected Payment(as at today)"] - df["Premium Received"]
         df["Expected Payment(as at today)"] = df['Monthly Premium'] * df['Policy Months to date']
 
-        df["Premium Outstanding"] = df["Scheduled Payment(as at today)"] - df["Premium Received"]
+        df["Premium Outstanding"] = df["Expected Payment(as at today)"] - df["Premium Received"]
 
         
         df['Maturity Year'] = df['Maturity Date'].dt.year
