@@ -87,7 +87,7 @@ if uploaded_file is not None:
         Jan_number = len(Jan['Policy No'])
 
         # Select desired columns
-        Jan = Jan.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received', 'Units Outstanding']]
+        Jan = Jan.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received', 'Units Paid']]
         Jan = Jan.to_html(index=False)
         # Add inline CSS to change font size
         Jan = Jan.replace('<table', '<table style="font-size: 11px;"')
@@ -105,7 +105,7 @@ if uploaded_file is not None:
         Feb_number = len(Feb['Policy No'])
 
         # Select desired columns
-        Feb = Feb.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received', 'Units Outstanding']]
+        Feb = Feb.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received', 'Units Paid']]
         Feb = Feb.to_html(index=False)
         # Add inline CSS to change font size
         Feb = Feb.replace('<table', '<table style="font-size: 11px;"')
