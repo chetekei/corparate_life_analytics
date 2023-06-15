@@ -250,12 +250,6 @@ if uploaded_file is not None:
         Oct = df[(df['Maturity Month'] == 'October') & (df['Maturity Year'] == 2023 )]
         Oct_number = len(Oct['Policy No'])
 
-        # Select desired colum
-        # Display the DataFrame
-        st.subheader(f"First Maturity in October 2023")
-        st.markdown (f"Total number of policies: **{Oct_number}**")
-                     
-        st.markdown(Oct, unsafe_allow_html=True)ns
         Oct = Oct.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
         Oct = Oct.to_html(index=False)
         # Add inline CSS to change font size
