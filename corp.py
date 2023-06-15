@@ -176,7 +176,7 @@ if uploaded_file is not None:
     elif chart_select == "June 2023":
         # maturing in June
         Jun = df[(df['Maturity Month'] == 'June') & (df['Maturity Year'] == 2023 )]
-        Jun_number = len(June['Policy No'])
+        Jun_number = len(Jun['Policy No'])
 
         # Select desired columns
         Jun = Jun.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
