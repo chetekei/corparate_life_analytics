@@ -78,7 +78,7 @@ if uploaded_file is not None:
 # Define chart selection dropdown
 chart_select = st.sidebar.selectbox(
             label="SELECT",
-            options=["January 2023", "February 2023", "March 2023"]
+            options=["January 2023", "February 2023", "March 2023", "April 2023"]
         )
 
 if uploaded_file is not None:
@@ -136,6 +136,24 @@ if uploaded_file is not None:
         st.markdown (f"Total number of policies: **{Mar_number}**")
                      
         st.markdown(Mar, unsafe_allow_html=True)
+
+    elif chart_select == "April 2023":
+        # maturing in April
+        Apr = df[(df['Maturity Month'] == 'April') & (df['Maturity Year'] == 2023 )]
+        Apr_number = len(Apr['Policy No'])
+
+        # Select desired columns
+        Apr = Apr.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Apr = Apr.to_html(index=False)
+        # Add inline CSS to change font size
+        Apr = Apr.replace('<table', '<table style="font-size: 11px;"')
+       
+       
+        # Display the DataFrame
+        st.subheader(f"First Maturity in April 2023")
+        st.markdown (f"Total number of policies: **{Apr_number}**")
+                     
+        st.markdown(Apr, unsafe_allow_html=True)
        
     else:
         st.write("Failed to load data from the uploaded file.")
