@@ -209,7 +209,7 @@ if uploaded_file is not None:
                      
         st.markdown(Jul, unsafe_allow_html=True)
 
-    elif elif chart_select == "August 2023":
+    elif chart_select == "August 2023":
         # maturing in August
         Aug = df[(df['Maturity Month'] == 'August') & (df['Maturity Year'] == 2023 )]
         Aug_number = len(Aug['Policy No'])
