@@ -187,7 +187,7 @@ if uploaded_file is not None:
        
         # Display the DataFrame
         st.subheader(f"First Maturity in June 2023")
-        st.markdown (f"Total number of policies: **{June_number}**")
+        st.markdown (f"Total number of policies: **{Jun_number}**")
                      
         st.markdown(Jun, unsafe_allow_html=True)
 
