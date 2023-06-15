@@ -96,8 +96,7 @@ if uploaded_file is not None:
        
         # Display the DataFrame
         st.subheader(f"First Maturity in January 2023")
-        st.markdown (f"Total number of policies: **{Jan_number}**")
-                     
+        st.markdown (f"Total number of policies: **{Jan_number}**")                     
         st.markdown(Jan, unsafe_allow_html=True)
                
 
@@ -115,8 +114,7 @@ if uploaded_file is not None:
        
         # Display the DataFrame
         st.subheader(f"First Maturity in February 2023")
-        st.markdown (f"Total number of policies: **{Feb_number}**")
-                     
+        st.markdown (f"Total number of policies: **{Feb_number}**")                     
         st.markdown(Feb, unsafe_allow_html=True)
        
     elif chart_select == "March 2023":
@@ -133,8 +131,7 @@ if uploaded_file is not None:
        
         # Display the DataFrame
         st.subheader(f"First Maturity in March 2023")
-        st.markdown (f"Total number of policies: **{Mar_number}**")
-                     
+        st.markdown (f"Total number of policies: **{Mar_number}**")                     
         st.markdown(Mar, unsafe_allow_html=True)
 
     elif chart_select == "April 2023":
@@ -151,8 +148,7 @@ if uploaded_file is not None:
        
         # Display the DataFrame
         st.subheader(f"First Maturity in April 2023")
-        st.markdown (f"Total number of policies: **{Apr_number}**")
-                     
+        st.markdown (f"Total number of policies: **{Apr_number}**")                     
         st.markdown(Apr, unsafe_allow_html=True)
 
     elif chart_select == "May 2023":
@@ -169,8 +165,7 @@ if uploaded_file is not None:
        
         # Display the DataFrame
         st.subheader(f"First Maturity in May 2023")
-        st.markdown (f"Total number of policies: **{May_number}**")
-                     
+        st.markdown (f"Total number of policies: **{May_number}**")                     
         st.markdown(May, unsafe_allow_html=True)
 
     elif chart_select == "June 2023":
@@ -187,8 +182,7 @@ if uploaded_file is not None:
        
         # Display the DataFrame
         st.subheader(f"First Maturity in June 2023")
-        st.markdown (f"Total number of policies: **{Jun_number}**")
-                     
+        st.markdown (f"Total number of policies: **{Jun_number}**")                     
         st.markdown(Jun, unsafe_allow_html=True)
 
     elif chart_select == "July 2023":
@@ -205,8 +199,7 @@ if uploaded_file is not None:
        
         # Display the DataFrame
         st.subheader(f"First Maturity in July 2023")
-        st.markdown (f"Total number of policies: **{Jul_number}**")
-                     
+        st.markdown (f"Total number of policies: **{Jul_number}**")                     
         st.markdown(Jul, unsafe_allow_html=True)
 
     elif chart_select == "August 2023":
@@ -223,8 +216,7 @@ if uploaded_file is not None:
        
         # Display the DataFrame
         st.subheader(f"First Maturity in August 2023")
-        st.markdown (f"Total number of policies: **{Aug_number}**")
-                     
+        st.markdown (f"Total number of policies: **{Aug_number}**")                     
         st.markdown(Aug, unsafe_allow_html=True)
 
     elif chart_select == "September 2023":
@@ -241,8 +233,7 @@ if uploaded_file is not None:
        
         # Display the DataFrame
         st.subheader(f"First Maturity in September 2023")
-        st.markdown (f"Total number of policies: **{Sep_number}**")
-                     
+        st.markdown (f"Total number of policies: **{Sep_number}**")                     
         st.markdown(Sep, unsafe_allow_html=True)
 
     elif chart_select == "October 2023":
@@ -257,8 +248,7 @@ if uploaded_file is not None:
         
          # Display the DataFrame
         st.subheader(f"First Maturity in October 2023")
-        st.markdown (f"Total number of policies: **{Oct_number}**")
-                     
+        st.markdown (f"Total number of policies: **{Oct_number}**")                     
         st.markdown(Oct, unsafe_allow_html=True)
 
     elif chart_select == "November 2023":
@@ -267,11 +257,6 @@ if uploaded_file is not None:
         Nov_number = len(Nov['Policy No'])
 
         # Select desired colum
-        # Display the DataFrame
-        st.subheader(f"First Maturity in November 2023")
-        st.markdown (f"Total number of policies: **{Nov_number}**")
-                     
-        st.markdown(Nov, unsafe_allow_html=True)ns
         Nov = Nov.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
         Nov = Nov.to_html(index=False)
         # Add inline CSS to change font size
@@ -279,8 +264,7 @@ if uploaded_file is not None:
         
          # Display the DataFrame
         st.subheader(f"First Maturity in November 2023")
-        st.markdown (f"Total number of policies: **{Nov_number}**")
-                     
+        st.markdown (f"Total number of policies: **{Nov_number}**")                     
         st.markdown(Nov, unsafe_allow_html=True)
 
     elif chart_select == "December 2023":
@@ -288,21 +272,16 @@ if uploaded_file is not None:
         Dec = df[(df['Maturity Month'] == 'December') & (df['Maturity Year'] == 2023 )]
         Dec_number = len(Dec['Policy No'])
 
-        # Select desired colum
-        # Display the DataFrame
-        st.subheader(f"First Maturity in December 2023")
-        st.markdown (f"Total number of policies: **{Dec_number}**")
-                     
-        st.markdown(Dec, unsafe_allow_html=True)ns
+        # Select desired column       
         Dec = Dec.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
         Dec = Dec.to_html(index=False)
+        
         # Add inline CSS to change font size
         Dec = Dec.replace('<table', '<table style="font-size: 11px;"')
         
          # Display the DataFrame
         st.subheader(f"First Maturity in December 2023")
-        st.markdown (f"Total number of policies: **{Dec_number}**")
-                     
+        st.markdown (f"Total number of policies: **{Dec_number}**")                     
         st.markdown(Dec, unsafe_allow_html=True)
 
     else:
