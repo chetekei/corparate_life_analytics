@@ -78,7 +78,7 @@ if uploaded_file is not None:
 # Define chart selection dropdown
 chart_select = st.sidebar.selectbox(
             label="SELECT",
-            options=["January 2023", "February 2023", "March 2023", "April 2023"]
+            options=["January 2023", "February 2023", "March 2023", "April 2023", "May 2023", "June 2023", "July 2023", "August 2023", "September 2023"]
         )
 
 if uploaded_file is not None:
