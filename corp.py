@@ -78,7 +78,7 @@ if uploaded_file is not None:
 # Define chart selection dropdown
 chart_select = st.sidebar.selectbox(
             label="SELECT",
-            options=["January 2023", "February 2023", "March 2023", "April 2023", "May 2023", "June 2023", "July 2023", "August 2023", "September 2023"]
+            options=["January 2023", "February 2023", "March 2023", "April 2023", "May 2023", "June 2023", "July 2023", "August 2023", "September 2023", "October 2023", "November 2023", "December 2023"]
         )
 
 if uploaded_file is not None:
@@ -244,6 +244,72 @@ if uploaded_file is not None:
         st.markdown (f"Total number of policies: **{Sep_number}**")
                      
         st.markdown(Sep, unsafe_allow_html=True)
+
+    elif chart_select == "October 2023":
+        # maturing in October
+        Oct = df[(df['Maturity Month'] == 'October') & (df['Maturity Year'] == 2023 )]
+        Oct_number = len(Oct['Policy No'])
+
+        # Select desired colum
+        # Display the DataFrame
+        st.subheader(f"First Maturity in October 2023")
+        st.markdown (f"Total number of policies: **{Oct_number}**")
+                     
+        st.markdown(Oct, unsafe_allow_html=True)ns
+        Oct = Oct.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Oct = Oct.to_html(index=False)
+        # Add inline CSS to change font size
+        Oct = Oct.replace('<table', '<table style="font-size: 11px;"')
+        
+         # Display the DataFrame
+        st.subheader(f"First Maturity in October 2023")
+        st.markdown (f"Total number of policies: **{Oct_number}**")
+                     
+        st.markdown(Oct, unsafe_allow_html=True)
+
+    elif chart_select == "November 2023":
+        # maturing in November
+        Nov = df[(df['Maturity Month'] == 'November') & (df['Maturity Year'] == 2023 )]
+        Nov_number = len(Nov['Policy No'])
+
+        # Select desired colum
+        # Display the DataFrame
+        st.subheader(f"First Maturity in November 2023")
+        st.markdown (f"Total number of policies: **{Nov_number}**")
+                     
+        st.markdown(Nov, unsafe_allow_html=True)ns
+        Nov = Nov.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Nov = Nov.to_html(index=False)
+        # Add inline CSS to change font size
+        Nov = Nov.replace('<table', '<table style="font-size: 11px;"')
+        
+         # Display the DataFrame
+        st.subheader(f"First Maturity in November 2023")
+        st.markdown (f"Total number of policies: **{Nov_number}**")
+                     
+        st.markdown(Nov, unsafe_allow_html=True)
+
+    elif chart_select == "December 2023":
+        # maturing in December
+        Dec = df[(df['Maturity Month'] == 'December') & (df['Maturity Year'] == 2023 )]
+        Dec_number = len(Dec['Policy No'])
+
+        # Select desired colum
+        # Display the DataFrame
+        st.subheader(f"First Maturity in December 2023")
+        st.markdown (f"Total number of policies: **{Dec_number}**")
+                     
+        st.markdown(Dec, unsafe_allow_html=True)ns
+        Dec = Dec.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Dec = Dec.to_html(index=False)
+        # Add inline CSS to change font size
+        Dec = Dec.replace('<table', '<table style="font-size: 11px;"')
+        
+         # Display the DataFrame
+        st.subheader(f"First Maturity in December 2023")
+        st.markdown (f"Total number of policies: **{Dec_number}**")
+                     
+        st.markdown(Dec, unsafe_allow_html=True)
 
     else:
         st.write("Failed to load data from the uploaded file.")
