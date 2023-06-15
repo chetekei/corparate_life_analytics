@@ -60,18 +60,13 @@ if uploaded_file is not None:
         df['Policy Months to date'] = ((df['Today'] - df['Start Date']) / np.timedelta64(1, 'M')).astype(int)
         df["Monthly Premium"] = (df["Annual Premium"] / 12)
         df["Units Paid"] = df["Premium Received"]/df["Monthly Premium"]
-        df["Units Outstanding"] = df['Policy Months to date'] - df["Units Paid"]
-        
-        df["Expected Payment(as at today)"] = df['Monthly Premium'] * df['Policy Months to date']
-        
-        df["Premium Outstanding"] = df["Expected Payment(as at today)"] - df["Premium Received"]
-        df["Expected Payment(as at today)"] = df['Monthly Premium'] * df['Policy Months to date']
+        df["Units Outstanding"] = df['Policy Months to date'] - df["Units Paid"]        
+        df["Expected Payment(as at today)"] = df['Monthly Premium'] * df['Policy Months to date']        
+        df["Premium Outstanding"] = df["Expected Payment(as at today)"] - df["Premium Received"]     
 
-        df["Premium Outstanding"] = df["Expected Payment(as at today)"] - df["Premium Received"]
-
+       
         
-        df['Maturity Year'] = df['Maturity Date'].dt.year
-        
+        df['Maturity Year'] = df['Maturity Date'].dt.year       
        
         df['Maturity Month'] = df['Maturity Date'].dt.month_name()                                       
           
