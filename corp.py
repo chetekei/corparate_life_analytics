@@ -57,12 +57,15 @@ if uploaded_file is not None:
 
         
         # Calculate the number of months
-        df['nb_months'] = ((df['Today'] - df['Start Date']) / np.timedelta64(1, 'M')).astype(int)
-
-
+        df['Policy Months to date'] = ((df['Today'] - df['Start Date']) / np.timedelta64(1, 'M')).astype(int)
         df["Monthly Premium"] = (df["Annual Premium"] / 12)
-
-        df["Scheduled Payment(as at today)"] = df['Monthly Premium'] * df['nb_months']
+        df["Units Paid"] = df["Premium Received"]/df["Monthly Premium"]
+        df["Units Outstanding"] = df['Policy Months to date'] - df["Units Paid"]
+        
+        df["Expected Payment(as at today)"] = df['Monthly Premium'] * df['Policy Months to date']
+        
+        df["Premium Outstanding"] = df["Expected Payment(as at today)"] - df["Premium Received"]
+        df["Expected Payment(as at today)"] = df['Monthly Premium'] * df['nb_months']
 
         df["Premium Outstanding"] = df["Scheduled Payment(as at today)"] - df["Premium Received"]
 
@@ -89,7 +92,7 @@ if uploaded_file is not None:
         Jan_number = len(Jan['Policy No'])
 
         # Select desired columns
-        Jan = Jan.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Jan = Jan.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received', 'Units Outstanding']]
         Jan = Jan.to_html(index=False)
         # Add inline CSS to change font size
         Jan = Jan.replace('<table', '<table style="font-size: 11px;"')
@@ -107,7 +110,7 @@ if uploaded_file is not None:
         Feb_number = len(Feb['Policy No'])
 
         # Select desired columns
-        Feb = Feb.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Feb = Feb.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received', 'Units Outstanding']]
         Feb = Feb.to_html(index=False)
         # Add inline CSS to change font size
         Feb = Feb.replace('<table', '<table style="font-size: 11px;"')
@@ -124,7 +127,7 @@ if uploaded_file is not None:
         Mar_number = len(Mar['Policy No'])
 
         # Select desired columns
-        Mar = Mar.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Mar = Mar.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received' 'Units Outstanding']]
         Mar = Mar.to_html(index=False)
         # Add inline CSS to change font size
         Mar = Mar.replace('<table', '<table style="font-size: 11px;"')
@@ -141,7 +144,7 @@ if uploaded_file is not None:
         Apr_number = len(Apr['Policy No'])
 
         # Select desired columns
-        Apr = Apr.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Apr = Apr.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received' 'Units Outstanding']]
         Apr = Apr.to_html(index=False)
         # Add inline CSS to change font size
         Apr = Apr.replace('<table', '<table style="font-size: 11px;"')
@@ -158,7 +161,7 @@ if uploaded_file is not None:
         May_number = len(May['Policy No'])
 
         # Select desired columns
-        May = May.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        May = May.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received' 'Units Outstanding']]
         May = May.to_html(index=False)
         # Add inline CSS to change font size
         May = May.replace('<table', '<table style="font-size: 11px;"')
@@ -175,7 +178,7 @@ if uploaded_file is not None:
         Jun_number = len(Jun['Policy No'])
 
         # Select desired columns
-        Jun = Jun.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Jun = Jun.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received' 'Units Outstanding']]
         Jun = Jun.to_html(index=False)
         # Add inline CSS to change font size
         Jun = Jun.replace('<table', '<table style="font-size: 11px;"')
@@ -192,7 +195,7 @@ if uploaded_file is not None:
         Jul_number = len(Jul['Policy No'])
 
         # Select desired columns
-        Jul = Jul.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Jul = Jul.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received' 'Units Outstanding']]
         Jul = Jul.to_html(index=False)
         # Add inline CSS to change font size
         Jul = Jul.replace('<table', '<table style="font-size: 11px;"')
@@ -209,7 +212,7 @@ if uploaded_file is not None:
         Aug_number = len(Aug['Policy No'])
 
         # Select desired columns
-        Aug = Aug.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Aug = Aug.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received' 'Units Outstanding']]
         Aug = Aug.to_html(index=False)
         # Add inline CSS to change font size
         Aug = Aug.replace('<table', '<table style="font-size: 11px;"')
@@ -226,7 +229,7 @@ if uploaded_file is not None:
         Sep_number = len(Sep['Policy No'])
 
         # Select desired columns
-        Sep = Sep.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Sep = Sep.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received' 'Units Outstanding']]
         Sep = Sep.to_html(index=False)
         # Add inline CSS to change font size
         Sep = Sep.replace('<table', '<table style="font-size: 11px;"')
@@ -242,7 +245,7 @@ if uploaded_file is not None:
         Oct = df[(df['Maturity Month'] == 'October') & (df['Maturity Year'] == 2023 )]
         Oct_number = len(Oct['Policy No'])
 
-        Oct = Oct.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Oct = Oct.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received' 'Units Outstanding']]
         Oct = Oct.to_html(index=False)
         # Add inline CSS to change font size
         Oct = Oct.replace('<table', '<table style="font-size: 11px;"')
@@ -258,7 +261,7 @@ if uploaded_file is not None:
         Nov_number = len(Nov['Policy No'])
 
         # Select desired colum
-        Nov = Nov.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Nov = Nov.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received' 'Units Outstanding']]
         Nov = Nov.to_html(index=False)
         # Add inline CSS to change font size
         Nov = Nov.replace('<table', '<table style="font-size: 11px;"')
@@ -274,7 +277,7 @@ if uploaded_file is not None:
         Dec_number = len(Dec['Policy No'])
 
         # Select desired column       
-        Dec = Dec.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Dec = Dec.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received' 'Units Outstanding']]
         Dec = Dec.to_html(index=False)
         
         # Add inline CSS to change font size
