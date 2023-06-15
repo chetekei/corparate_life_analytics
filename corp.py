@@ -154,8 +154,99 @@ if uploaded_file is not None:
         st.markdown (f"Total number of policies: **{Apr_number}**")
                      
         st.markdown(Apr, unsafe_allow_html=True)
+
+    elif chart_select == "May 2023":
+        # maturing in May
+        May = df[(df['Maturity Month'] == 'May') & (df['Maturity Year'] == 2023 )]
+        May_number = len(May['Policy No'])
+
+        # Select desired columns
+        May = May.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        May = May.to_html(index=False)
+        # Add inline CSS to change font size
+        May = May.replace('<table', '<table style="font-size: 11px;"')
        
+       
+        # Display the DataFrame
+        st.subheader(f"First Maturity in May 2023")
+        st.markdown (f"Total number of policies: **{May_number}**")
+                     
+        st.markdown(May, unsafe_allow_html=True)
+
+    elif chart_select == "June 2023":
+        # maturing in June
+        Jun = df[(df['Maturity Month'] == 'June') & (df['Maturity Year'] == 2023 )]
+        Jun_number = len(June['Policy No'])
+
+        # Select desired columns
+        Jun = Jun.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Jun = Jun.to_html(index=False)
+        # Add inline CSS to change font size
+        Jun = Jun.replace('<table', '<table style="font-size: 11px;"')
+       
+       
+        # Display the DataFrame
+        st.subheader(f"First Maturity in June 2023")
+        st.markdown (f"Total number of policies: **{June_number}**")
+                     
+        st.markdown(Jun, unsafe_allow_html=True)
+
+    elif chart_select == "July 2023":
+        # maturing in July
+        Jul = df[(df['Maturity Month'] == 'July') & (df['Maturity Year'] == 2023 )]
+        Jul_number = len(Jul['Policy No'])
+
+        # Select desired columns
+        Jul = Jul.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Jul = Jul.to_html(index=False)
+        # Add inline CSS to change font size
+        Jul = Jul.replace('<table', '<table style="font-size: 11px;"')
+       
+       
+        # Display the DataFrame
+        st.subheader(f"First Maturity in July 2023")
+        st.markdown (f"Total number of policies: **{Jul_number}**")
+                     
+        st.markdown(Jul, unsafe_allow_html=True)
+
+    elif elif chart_select == "August 2023":
+        # maturing in August
+        Aug = df[(df['Maturity Month'] == 'August') & (df['Maturity Year'] == 2023 )]
+        Aug_number = len(Aug['Policy No'])
+
+        # Select desired columns
+        Aug = Aug.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Aug = Aug.to_html(index=False)
+        # Add inline CSS to change font size
+        Aug = Aug.replace('<table', '<table style="font-size: 11px;"')
+       
+       
+        # Display the DataFrame
+        st.subheader(f"First Maturity in August 2023")
+        st.markdown (f"Total number of policies: **{Aug_number}**")
+                     
+        st.markdown(Aug, unsafe_allow_html=True)
+
+    elif chart_select == "September 2023":
+        # maturing in September
+        Sep = df[(df['Maturity Month'] == 'September') & (df['Maturity Year'] == 2023 )]
+        Sep_number = len(Sep['Policy No'])
+
+        # Select desired columns
+        Sep = Sep.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received']]
+        Sep = Sep.to_html(index=False)
+        # Add inline CSS to change font size
+        Sep = Sep.replace('<table', '<table style="font-size: 11px;"')
+       
+       
+        # Display the DataFrame
+        st.subheader(f"First Maturity in September 2023")
+        st.markdown (f"Total number of policies: **{Sep_number}**")
+                     
+        st.markdown(Sep, unsafe_allow_html=True)
+
     else:
         st.write("Failed to load data from the uploaded file.")
+
 else:
     st.write("Please upload a file to visualize.")
