@@ -57,7 +57,7 @@ if uploaded_file is not None:
 
         
         # Calculate the number of months
-        df['Policy Months to date'] = ((df['Today'] - df['Start Date']) / np.timedelta64(1, 'M')).astype(int)
+        df['Policy Months to date'] = ((df['Maturity Date'] - df['Start Date']) / np.timedelta64(1, 'M')).astype(int)
         df["Monthly Premium"] = (df["Annual Premium"] / 12)
         df["Units Paid"] = df["Premium Received"]/df["Monthly Premium"]
         df["Units Outstanding"] = df['Policy Months to date'] - df["Units Paid"]        
