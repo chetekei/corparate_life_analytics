@@ -50,6 +50,11 @@ if uploaded_file is not None:
 
         df['Maturity Date'] = pd.to_datetime(df['Maturity Date'])
 
+        #today = pd.Timestamp(datetime.today())
+        today = datetime.today().strftime('%Y-%m-%d')
+        newdf['Today'] = today
+        newdf['Today'] = newdf['Today'].astype('datetime64[ns]')
+
         
         # Calculate the number of months
         df['nb_months'] = ((df['Today'] - df['Start Date']) / np.timedelta64(1, 'M')).astype(int)
