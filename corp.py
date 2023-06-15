@@ -65,7 +65,7 @@ if uploaded_file is not None:
         df["Expected Payment(as at today)"] = df['Monthly Premium'] * df['Policy Months to date']
         
         df["Premium Outstanding"] = df["Expected Payment(as at today)"] - df["Premium Received"]
-        df["Expected Payment(as at today)"] = df['Monthly Premium'] * df['nb_months']
+        df["Expected Payment(as at today)"] = df['Monthly Premium'] * df['Policy Months to date']
 
         df["Premium Outstanding"] = df["Scheduled Payment(as at today)"] - df["Premium Received"]
 
