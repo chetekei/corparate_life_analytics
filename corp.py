@@ -138,6 +138,11 @@ if uploaded_file is not None:
     elif chart_select == "March 2023":
         # maturing in March
         Mar = df[(df['Maturity Month'] == 'March') & (df['Maturity Year'] == 2023 )]
+        # Save the DataFrame as a CSV file
+        Mar.to_csv('March2023.csv', index=False)
+
+        # Create a download link for the CSV file
+        st.markdown(create_download_link(Mar, "March2023.csv"), unsafe_allow_html=True)
         Mar_number = len(Mar['Policy No'])
 
         # Select desired columns
@@ -155,6 +160,11 @@ if uploaded_file is not None:
     elif chart_select == "April 2023":
         # maturing in April
         Apr = df[(df['Maturity Month'] == 'April') & (df['Maturity Year'] == 2023 )]
+        # Save the DataFrame as a CSV file
+        Apr.to_csv('April2023.csv', index=False)
+
+        # Create a download link for the CSV file
+        st.markdown(create_download_link(Apr, "April2023.csv"), unsafe_allow_html=True)
         Apr_number = len(Apr['Policy No'])
 
         # Select desired columns
@@ -172,6 +182,11 @@ if uploaded_file is not None:
     elif chart_select == "May 2023":
         # maturing in May
         May = df[(df['Maturity Month'] == 'May') & (df['Maturity Year'] == 2023 )]
+        # Save the DataFrame as a CSV file
+        May.to_csv('May2023.csv', index=False)
+
+        # Create a download link for the CSV file
+        st.markdown(create_download_link(May, "May2023.csv"), unsafe_allow_html=True)
         May_number = len(May['Policy No'])
 
         # Select desired columns
@@ -189,6 +204,11 @@ if uploaded_file is not None:
     elif chart_select == "June 2023":
         # maturing in June
         Jun = df[(df['Maturity Month'] == 'June') & (df['Maturity Year'] == 2023 )]
+        # Save the DataFrame as a CSV file
+        Jun.to_csv('June2023.csv', index=False)
+
+        # Create a download link for the CSV file
+        st.markdown(create_download_link(Jun, "June2023.csv"), unsafe_allow_html=True)
         Jun_number = len(Jun['Policy No'])
 
         # Select desired columns
@@ -206,6 +226,11 @@ if uploaded_file is not None:
     elif chart_select == "July 2023":
         # maturing in July
         Jul = df[(df['Maturity Month'] == 'July') & (df['Maturity Year'] == 2023 )]
+        # Save the DataFrame as a CSV file
+        Jul.to_csv('July2023.csv', index=False)
+
+        # Create a download link for the CSV file
+        st.markdown(create_download_link(Jul, "July2023.csv"), unsafe_allow_html=True)
         Jul_number = len(Jul['Policy No'])
 
         # Select desired columns
@@ -223,6 +248,11 @@ if uploaded_file is not None:
     elif chart_select == "August 2023":
         # maturing in August
         Aug = df[(df['Maturity Month'] == 'August') & (df['Maturity Year'] == 2023 )]
+        # Save the DataFrame as a CSV file
+        Aug.to_csv('August2023.csv', index=False)
+
+        # Create a download link for the CSV file
+        st.markdown(create_download_link(Aug, "August2023.csv"), unsafe_allow_html=True)
         Aug_number = len(Aug['Policy No'])
 
         # Select desired columns
@@ -240,6 +270,11 @@ if uploaded_file is not None:
     elif chart_select == "September 2023":
         # maturing in September
         Sep = df[(df['Maturity Month'] == 'September') & (df['Maturity Year'] == 2023 )]
+        # Save the DataFrame as a CSV file
+        Sep.to_csv('September2023.csv', index=False)
+
+        # Create a download link for the CSV file
+        st.markdown(create_download_link(Sep, "September2023.csv"), unsafe_allow_html=True)
         Sep_number = len(Sep['Policy No'])
 
         # Select desired columns
@@ -257,6 +292,11 @@ if uploaded_file is not None:
     elif chart_select == "October 2023":
         # maturing in October
         Oct = df[(df['Maturity Month'] == 'October') & (df['Maturity Year'] == 2023 )]
+        # Save the DataFrame as a CSV file
+        Oct.to_csv('October2023.csv', index=False)
+
+        # Create a download link for the CSV file
+        st.markdown(create_download_link(Oct, "October2023.csv"), unsafe_allow_html=True)
         Oct_number = len(Oct['Policy No'])
 
         Oct = Oct.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received', 'Units Paid', 'Premium Outstanding']]
@@ -272,6 +312,11 @@ if uploaded_file is not None:
     elif chart_select == "November 2023":
         # maturing in November
         Nov = df[(df['Maturity Month'] == 'November') & (df['Maturity Year'] == 2023 )]
+        # Save the DataFrame as a CSV file
+        Nov.to_csv('November2023.csv', index=False)
+
+        # Create a download link for the CSV file
+        st.markdown(create_download_link(Nov, "November2023.csv"), unsafe_allow_html=True)
         Nov_number = len(Nov['Policy No'])
 
         # Select desired colum
@@ -288,6 +333,11 @@ if uploaded_file is not None:
     elif chart_select == "December 2023":
         # maturing in December
         Dec = df[(df['Maturity Month'] == 'December') & (df['Maturity Year'] == 2023 )]
+        # Save the DataFrame as a CSV file
+        Dec.to_csv('December2023.csv', index=False)
+
+        # Create a download link for the CSV file
+        st.markdown(create_download_link(Dec, "December2023.csv"), unsafe_allow_html=True)
         Dec_number = len(Dec['Policy No'])
 
         # Select desired column       
