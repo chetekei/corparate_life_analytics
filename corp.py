@@ -59,12 +59,12 @@ if uploaded_file is not None:
 
         
         # Calculate the number of months
-        df['Policy Months to date'] = (df["Maturity Date"].dt.year - df["Start Date"].dt.year) * 12
+        df['Months(inception to maturity)'] = (df["Maturity Date"].dt.year - df["Start Date"].dt.year) * 12
         df["Monthly Premium"] = (df["Annual Premium"] / 12)
         df["Units Paid"] = df["Premium Received"]/df["Monthly Premium"]
-        df["Units Outstanding"] = df['Policy Months to date'] - df["Units Paid"]        
-        df["Expected Payment(as at today)"] = df['Monthly Premium'] * df['Policy Months to date']        
-        df["Premium Outstanding"] = df["Expected Payment(as at today)"] - df["Premium Received"]     
+        df["Units Outstanding"] = df['Months(inception to maturity)'] - df["Units Paid"]        
+        df["Total premium till maturity"] = df['Monthly Premium'] * df['Months(inception to maturity)']        
+        df["Premium Outstanding"] = df["Total premium till maturity"] - df["Premium Received"]     
 
        
         
