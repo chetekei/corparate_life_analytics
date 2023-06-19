@@ -90,11 +90,18 @@ chart_select = st.sidebar.selectbox(
 if uploaded_file is not None:
     if chart_select == "January 2023":
         # maturing in Jan 2023
+        
         Jan = df[(df['Maturity Month'] == 'January') & (df['Maturity Year'] == 2023 )]
         Jan_number = len(Jan['Policy No'])
 
         # Select desired columns
         Jan = Jan.loc[:, ['Policy No', 'Insured', 'Status','Start Date', 'Maturity Date', 'Sum Insured', 'Premium Received', 'Premium Outstanding']]
+        # Save the DataFrame as a CSV file
+        Jan.to_csv('january2023.csv', index=False)
+
+        # Create a download link for the CSV file
+        st.markdown(create_download_link(Jan, "january2023.csv"), unsafe_allow_html=True)
+        
         Jan = Jan.to_html(index=False)
         # Add inline CSS to change font size
         Jan = Jan.replace('<table', '<table style="font-size: 11px;"')
@@ -103,13 +110,7 @@ if uploaded_file is not None:
         st.subheader(f"First Maturity in January 2023")
         st.markdown (f"Total number of policies: **{Jan_number}**")                     
         st.markdown(Jan, unsafe_allow_html=True)
-        st.markdown(create_download_link(Jan, "january2023.csv"), unsafe_allow_html=True)
-         # Save the DataFrame as a CSV file
-        Jan.to_csv('Jan.csv', index=False)
-        # Display the download link
-        st.markdown(create_download_link('january2023.csv', 'Download CSV'), unsafe_allow_html=True)             
-        
-               
+                       
 
     elif chart_select == "February 2023":
         # maturing in Feb
