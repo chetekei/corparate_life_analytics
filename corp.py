@@ -115,6 +115,12 @@ if uploaded_file is not None:
     elif chart_select == "February 2023":
         # maturing in Feb
         Feb = df[(df['Maturity Month'] == 'February') & (df['Maturity Year'] == 2023 )]
+        # Save the DataFrame as a CSV file
+        Feb.to_csv('February2023.csv', index=False)
+
+        # Create a download link for the CSV file
+        st.markdown(create_download_link(Feb, "February2023.csv"), unsafe_allow_html=True)
+        
         Feb_number = len(Feb['Policy No'])
 
         # Select desired columns
