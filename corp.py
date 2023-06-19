@@ -4,6 +4,7 @@ import pandas as pd
 import math
 from datetime import datetime, timedelta
 import base64
+import io
 
 # configuration
 st.set_option('deprecation.showfileUploaderEncoding', False)
