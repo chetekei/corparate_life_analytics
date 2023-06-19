@@ -73,7 +73,12 @@ if uploaded_file is not None:
           
     except Exception as e:
         st.write("Error:", e)
-        
+
+def create_download_link(df, filename):
+    csv = df.to_csv(index=False)
+    b64 = base64.b64encode(csv.encode()).decode()  # Convert DataFrame to CSV string
+    href = f'<a href="data:file/csv;base64,{b64}" download="{filename}">Download {filename}</a>'
+    return href
         
 # Define chart selection dropdown
 chart_select = st.sidebar.selectbox(
@@ -92,12 +97,13 @@ if uploaded_file is not None:
         Jan = Jan.to_html(index=False)
         # Add inline CSS to change font size
         Jan = Jan.replace('<table', '<table style="font-size: 11px;"')
-       
+              
        
         # Display the DataFrame
         st.subheader(f"First Maturity in January 2023")
         st.markdown (f"Total number of policies: **{Jan_number}**")                     
         st.markdown(Jan, unsafe_allow_html=True)
+        st.markdown(create_download_link(Jan, "january2023.csv"), unsafe_allow_html=True)
                
 
     elif chart_select == "February 2023":
