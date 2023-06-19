@@ -98,14 +98,14 @@ if uploaded_file is not None:
         Jan = Jan.to_html(index=False)
         # Add inline CSS to change font size
         Jan = Jan.replace('<table', '<table style="font-size: 11px;"')
-        # Save the DataFrame as a CSV file
-        Jan.to_csv('Jan.csv', index=False)
-       
+              
         # Display the DataFrame
         st.subheader(f"First Maturity in January 2023")
         st.markdown (f"Total number of policies: **{Jan_number}**")                     
         st.markdown(Jan, unsafe_allow_html=True)
         st.markdown(create_download_link(Jan, "january2023.csv"), unsafe_allow_html=True)
+         # Save the DataFrame as a CSV file
+        Jan.to_csv('Jan.csv', index=False)
         # Display the download link
         st.download_button(label='Download CSV', data=Jan.to_csv().encode('utf-8'), file_name='Jan.csv', mime='text/csv')
               
