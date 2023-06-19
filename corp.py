@@ -107,8 +107,7 @@ if uploaded_file is not None:
          # Save the DataFrame as a CSV file
         Jan.to_csv('Jan.csv', index=False)
         # Display the download link
-        st.download_button(label='Download CSV', data=Jan.to_csv().encode('utf-8'), file_name='Jan.csv', mime='text/csv')
-              
+       st.markdown(create_download_link('january2023.csv', 'Download CSV'), unsafe_allow_html=True)             
         
                
 
