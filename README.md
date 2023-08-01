@@ -1,2 +1,2 @@
 # corparate_life_analytics
-Web app for analyzing Corporate Insurance Data
+Web application for data peprocessing for Corporate Insurance Life Insurance Data
